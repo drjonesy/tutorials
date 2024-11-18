@@ -82,7 +82,8 @@ All of the following tools are using the FREE versions.
 ## Generate Secure Keys for RS256 Decryption Algorithm
 
 Generate the following keys in order. This example was run on a `MacOSX M2 device`.
-I've included pre-generated sample keys if you'd like to just copy and paste these for local unsecure testing.
+
+> I've included pre-generated sample keys if you'd like to just copy and paste these for local unsecure testing.
 
 ```sh
 # Generate (Private) Key: Run Command
