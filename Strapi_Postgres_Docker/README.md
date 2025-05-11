@@ -81,7 +81,8 @@ Running `docker compose up -d` should generate a new folder/directory `/postgres
 
 It will also create a container for Postgres and OmniDB. Then create a custom container using the `./strapi/app/` files.
 
-> [!WARNING] > **DO NOT DELETE** - The `postgres` or `strapi` directories because they are tied to your `Docker` application when you need to restart or update some functionality !!!
+> [!WARNING] 
+> **DO NOT DELETE** - The `postgres` or `strapi` directories because they are tied to your `Docker` application when you need to restart or update some functionality !!!
 
 ### 4) ✅ Expected Output
 
