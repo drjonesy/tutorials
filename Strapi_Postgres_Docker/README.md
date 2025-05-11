@@ -1,4 +1,6 @@
-# Strapi and Postgres in Docker
+# Strapi + Postgres in Docker
+
+<img src="./docker-desktop-strapi.png" style="border: solid 1px rgb(203, 203, 203);"/>
 
 ### Purpose
 
@@ -79,5 +81,10 @@ Running `docker compose up -d` should generate a new folder/directory `/postgres
 
 It will also create a container for Postgres and OmniDB. Then create a custom container using the `./strapi/app/` files.
 
-> [!WARNING]
-> DO NOT **DELETE** - The postgres or strapi directories because they are tied to your Docker application when you need to restart or update some functionality !!!
+> [!WARNING] > **DO NOT DELETE** - The `postgres` or `strapi` directories because they are tied to your `Docker` application when you need to restart or update some functionality !!!
+
+### 4) ✅ Expected Output
+
+You should now be able to setup your `Strapi` environment by going to: `http://localhost:1337`
+
+![](./docker-container-strapi.png)

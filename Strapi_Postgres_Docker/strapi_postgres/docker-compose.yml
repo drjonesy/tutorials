@@ -1,0 +1,71 @@
+name: strapi_postgres
+
+services:
+  # === POSTGRES Service ===
+  postgres:
+    image: postgres:17-alpine
+    platform: linux/amd64
+    container_name: postgres-db
+    # Load environment variables from the .env file in the same directory (the root)
+    env_file:
+      - ./.env
+    ports:
+      - "5432:5432"
+    volumes:
+      # Use a named volume for proper data persistence.
+      # This maps the named volume 'postgres_data' to the internal Postgres data directory.
+      - postgres_data:/var/lib/postgresql/data
+    # Optional: Add health check to ensure DB is truly ready before other services start
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s # Give Postgres some time to start initially
+
+  # === STRAPI Service ===
+  strapi:
+    # Build the image using the Dockerfile in the current directory (the root './')
+    build:
+      context: . # The build context is the directory containing this docker-compose.yml and the Dockerfile (the root './')
+      dockerfile: Dockerfile # The Dockerfile is in the build context directory
+    container_name: my-strapi-app
+    ports:
+      - "1337:1337" # Map host port 1337 to container port 1337
+    volumes:
+      # Mount the local Strapi project directory (./strapi/app/) into the container's working directory (/app)
+      # The path './strapi/app' is relative to the directory where docker-compose.yml is located (the root './')
+      - ./strapi/app:/app
+      # Ignore node_modules from the host to use the one installed inside the container
+      # This ensures dependencies installed during the Docker build are used
+      - /app/node_modules
+    # Load environment variables from the .env file in the same directory (the root './')
+    env_file:
+      - ./.env
+    # Ensure Strapi starts only after the Postgres database is healthy
+    depends_on:
+      postgres:
+        condition: service_healthy # Use the healthcheck condition
+
+    # Optional: Restart policy
+    restart: unless-stopped
+
+  # === OmniDB Viewer Service ===
+  omnidb:
+    image: taivokasper/omnidb
+    platform: linux/amd64
+    container_name: omnidb
+    depends_on:
+      - postgres # OmniDB depends on Postgres
+    ports:
+      - "8080:8080"
+      - "25482:25482"
+    volumes:
+      - omnidb-config:/etc/omnidb
+    restart: unless-stopped
+
+# Define named volumes for data persistence
+volumes:
+  postgres_data:
+    driver: local
+  omnidb-config: # Volume for OmniDB configuration
