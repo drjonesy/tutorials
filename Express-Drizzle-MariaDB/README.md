@@ -8,7 +8,7 @@ This is a bare bones setup. We will create two routes: getAllUsers and createUse
 
 ## Download Starter App
 
-This is an (optional) solution if you are already familiar with Drizzle. Clone the following repo: [Express-Drizzle-MariaDB-Starter]('https://github.com/drjonesy/Drizzle-Express-TypeScript-MariaDB')
+This is an (optional) solution if you are already familiar with Drizzle. Clone the following repo: [Express-Drizzle-MariaDB-Starter](https://github.com/drjonesy/Drizzle-Express-TypeScript-MariaDB)
 
 ## Prerequisites
 
