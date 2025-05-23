@@ -1,3 +1,5 @@
+![](../media/Drizzle-ORM-Express-TS-MariaDB-Docker-Tutorial-Banner.png)
+
 # Express with TypeScript, Drizzle ORM, and MariaDB (MySQL)
 
 > Date: 2025-05-23
