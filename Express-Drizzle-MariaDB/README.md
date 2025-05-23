@@ -14,7 +14,7 @@ This is an (optional) solution if you are already familiar with Drizzle. Clone t
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js**: [Download and Install Node.js](https://nodejs.org/en/download/)
+- **Node.js**: [Download and Install Node.js](https://nodejs.org/en/download/) (recommended)
 - **MariaDB**: [Use Docker Compose file](#docker-compose-mariadb-setup)
 - **npm** or **Yarn**: Node.js comes with npm. If you prefer Yarn, [install it globally](https://yarnpkg.com/getting-started/install).
 
